@@ -1,6 +1,5 @@
 package funcionamentoModificadores;
 import modificadores.InventaModificador;
-import modificadores.Modificador;
 import palavras.ConjuntoPalavras;
 
 /**
