@@ -2,6 +2,10 @@ package base;
 import funcionamentoModificadores.InventaFuncionamentoModificador;
 import java.util.Scanner;
 
+/**
+ * @author Felipe Turetti Peruci
+ * @version 1.0
+ */
 public class ClassePrincipal {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"base"},{"l":"funcionamentoModificadores"},{"l":"modificadores"},{"l":"palavras"}];updateSearchResults();

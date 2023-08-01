@@ -1,5 +1,9 @@
 package modificadores;
 
+/**
+ * @author Felipe Turetti Peruci
+ * @version 1.0
+ */
 public class CaesarCipher implements Modificador {
 	private int k;
 	

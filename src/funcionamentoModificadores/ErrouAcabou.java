@@ -1,9 +1,12 @@
 package funcionamentoModificadores;
-
 import modificadores.InventaModificador;
 import modificadores.Modificador;
 import palavras.ConjuntoPalavras;
 
+/**
+ * @author Felipe Turetti Peruci
+ * @version 1.0
+ */
 public class ErrouAcabou implements FuncionamentoModificador {
 	private String nome, descricao, palavraAtual, palavraEmbaralhada;
 	private int palavras, tentativas, pontos;

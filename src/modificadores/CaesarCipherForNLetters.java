@@ -1,6 +1,10 @@
 package modificadores;
 import java.util.Random;
 
+/**
+ * @author Felipe Turetti Peruci
+ * @version 1.0
+ */
 public class CaesarCipherForNLetters implements Modificador {
 	private Random rng = new Random();
 	private int n, k;

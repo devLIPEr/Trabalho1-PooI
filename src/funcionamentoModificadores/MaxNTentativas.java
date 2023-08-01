@@ -2,6 +2,10 @@ package funcionamentoModificadores;
 import modificadores.*;
 import palavras.*;
 
+/**
+ * @author Felipe Turetti Peruci
+ * @version 1.0
+ */
 public class MaxNTentativas implements FuncionamentoModificador {
 	private String nome, descricao, palavraAtual, palavraEmbaralhada;
 	private int palavras, tentativas, pontos, n;

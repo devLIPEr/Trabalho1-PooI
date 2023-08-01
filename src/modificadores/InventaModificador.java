@@ -2,6 +2,10 @@ package modificadores;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * @author Felipe Turetti Peruci
+ * @version 1.0
+ */
 public class InventaModificador implements Modificador{
 	private ArrayList<Modificador> modificadores = new ArrayList<Modificador>();
 	private int modificadorAtual;

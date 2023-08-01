@@ -2,6 +2,10 @@ package funcionamentoModificadores;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * @author Felipe Turetti Peruci
+ * @version 1.0
+ */
 public class InventaFuncionamentoModificador {
 	private ArrayList<FuncionamentoModificador> fNs = new ArrayList<FuncionamentoModificador>();
 	Random rng = new Random();
