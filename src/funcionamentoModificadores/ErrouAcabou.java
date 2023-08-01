@@ -10,7 +10,7 @@ import palavras.ConjuntoPalavras;
 public class ErrouAcabou implements FuncionamentoModificador {
 	private String nome, descricao, palavraAtual, palavraEmbaralhada;
 	private int palavras, tentativas, pontos;
-	private Modificador modificador = new InventaModificador(2, 5); // 2 letras +5 na cifra
+	private InventaModificador modificador = new InventaModificador(2, 5); // 2 letras +5 na cifra
 	private ConjuntoPalavras conjuntoPalavras = new ConjuntoPalavras();
 	private boolean correta = false;
 	

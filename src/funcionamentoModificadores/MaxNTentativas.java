@@ -9,7 +9,7 @@ import palavras.*;
 public class MaxNTentativas implements FuncionamentoModificador {
 	private String nome, descricao, palavraAtual, palavraEmbaralhada;
 	private int palavras, tentativas, pontos, n;
-	private Modificador modificador = new InventaModificador(3, 2); // 3 letras +2 na cifra
+	private InventaModificador modificador = new InventaModificador(3, 2); // 3 letras +2 na cifra
 	private ConjuntoPalavras conjuntoPalavras = new ConjuntoPalavras();
 	private boolean correta = false;
 	
