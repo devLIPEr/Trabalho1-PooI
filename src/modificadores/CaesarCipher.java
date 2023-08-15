@@ -2,7 +2,7 @@ package modificadores;
 
 /**
  * @author Felipe Turetti Peruci
- * @version 1.0
+ * @version 1.1
  */
 public class CaesarCipher implements Modificador {
 	private int k;
@@ -36,6 +36,13 @@ public class CaesarCipher implements Modificador {
 
 	@Override
 	public String toString() {
-		return String.format("CaesarCipher%dValores", k);
+		return String.format("Cifra de César +%d", k);
+	}
+	
+	/**
+	 * @return O nome do método utilizado
+	 */
+	public String getMetodo() {
+		return "Cifra de César";
 	}
 }

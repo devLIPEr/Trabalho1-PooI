@@ -3,12 +3,15 @@ import java.util.Random;
 
 /**
  * @author Felipe Turetti Peruci
- * @version 1.0
+ * @version 1.1
  */
 public class SwapNLetters implements Modificador {
 	private Random rng = new Random();
 	private int n;
 	
+	/**
+	 * @param n Número de letras para trocar
+	 */
 	public SwapNLetters(int n) {
 		this.n = n;
 	}
@@ -39,6 +42,13 @@ public class SwapNLetters implements Modificador {
 
 	@Override
 	public String toString() {
-		return String.format("Swap%dLetters", n);
+		return String.format("Troca %d letras", n);
+	}
+
+	/**
+	 * @return O nome do método utilizado
+	 */
+	public String getMetodo() {
+		return "Troca letras";
 	}
 }

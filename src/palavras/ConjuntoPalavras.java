@@ -1,32 +1,38 @@
 package palavras;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
  * @author Felipe Turetti Peruci
- * @version 1.0
+ * @version 1.1
  */
 public class ConjuntoPalavras {
-	private ArrayList<String> listaDePalavras = new ArrayList<String>();
-	private Random rng = new Random();
-
-	public ConjuntoPalavras(){
-		listaDePalavras.add("propriedade");
-		listaDePalavras.add("escavar");
-		listaDePalavras.add("grato");
-		listaDePalavras.add("conjunto");
-		listaDePalavras.add("palavra");
-		listaDePalavras.add("contorcer");
-		listaDePalavras.add("merecer");
-		listaDePalavras.add("tolerar");
-		listaDePalavras.add("cativar");
-		listaDePalavras.add("filhos");
-	}
+	private static ArrayList<String> listaDePalavras = new ArrayList<String>(
+			Arrays.asList(
+					"propriedade",
+					"escavar",
+					"grato",
+					"conjunto",
+					"contorcer",
+					"palavra",
+					"merecer",
+					"tolerar",
+					"filhos",
+					"cativar",
+					"tentativa",
+					"modificador",
+					"funcionamento",
+					"comando",
+					"correta"
+					)
+			);
+	private static Random rng = new Random();
 	
 	/**
 	 * @return Uma palavra aleatória dentro do conjunto
 	 */
-	public String getRandomWord() {
+	public static String getRandomWord() {
 		return listaDePalavras.get(rng.nextInt(listaDePalavras.size()));
 	}
 }

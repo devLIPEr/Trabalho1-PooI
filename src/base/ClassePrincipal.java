@@ -1,10 +1,11 @@
 package base;
 import funcionamentoModificadores.InventaFuncionamentoModificador;
 import java.util.Scanner;
+import exceptions.*;
 
 /**
  * @author Felipe Turetti Peruci
- * @version 1.0
+ * @version 1.1
  */
 public class ClassePrincipal {
 	public static void main(String[] args) {
@@ -14,16 +15,21 @@ public class ClassePrincipal {
 		InventaFuncionamentoModificador iFM = new InventaFuncionamentoModificador();
 		
 		iFM.selectFuncionamento();
+		
+		System.out.println("Funcionamento: " + iFM.getNomeFuncionamento());
+		System.out.println("Modificador: " + iFM.getModificador());
 		System.out.println(iFM.getPalavra());
+		
 		while(iFM.podeTentar()) {
-			tentativa = scanner.next();
-			while(tentativa.length() != iFM.getPalavra().length()) {
-				System.out.println("A palavra deve conter a mesma quantidade de letras");
+			try {
 				tentativa = scanner.next();
+				iFM.tentar(tentativa);
+			}catch(palavraLengthException e) {
+				System.out.println(ConsoleColors.RED_BRIGHT + e + ConsoleColors.RESET);
 			}
-			iFM.tentar(tentativa);
 		}
-		System.out.println(iFM.getFuncionamento());
+		
+		System.out.println(iFM);
 		
 		scanner.close();
 	}

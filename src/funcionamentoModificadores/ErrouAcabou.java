@@ -1,18 +1,22 @@
 package funcionamentoModificadores;
 import modificadores.InventaModificador;
 import palavras.ConjuntoPalavras;
+import base.ConsoleColors;
+import exceptions.*;
 
 /**
  * @author Felipe Turetti Peruci
- * @version 1.0
+ * @version 1.1
  */
 public class ErrouAcabou implements FuncionamentoModificador {
 	private String nome, descricao, palavraAtual, palavraEmbaralhada;
-	private int palavras, tentativas, pontos;
+	private int tentativas, pontos;
 	private InventaModificador modificador = new InventaModificador(2, 5); // 2 letras +5 na cifra
-	private ConjuntoPalavras conjuntoPalavras = new ConjuntoPalavras();
 	private boolean correta = false;
 	
+	/**
+	 * O usuário terá 1 tentativa para adivinhar a palavra
+	 */
 	public ErrouAcabou() {
 		this.nome = "ErrouAcabou";
 		this.descricao = "O usuário terá 1 tentativa para adivinhar a palavra";
@@ -28,14 +32,19 @@ public class ErrouAcabou implements FuncionamentoModificador {
 	
 	/**
 	 * @param tentativa Palavra que o usuário advinhou
+	 * @throws palavraLengthException 
 	 */
 	@Override
-	public void tentar(String tentativa) {
+	public void tentar(String tentativa) throws palavraLengthException {
+		if(tentativa.length() != palavraAtual.length()) {
+			throw new palavraLengthException();
+		}
 		if(tentativas < 1) {
+			tentativas++;
 			pontos = 0;
 			if(tentativa.equals(palavraAtual)) {
 				pontos = tentativa.length();
-				System.out.println("Palavra correta!!!");
+				System.out.println(ConsoleColors.GREEN_BRIGHT + "Palavra correta!!!" + ConsoleColors.RESET);
 				correta = true;
 			}else {
 				for(int i = 0; i < tentativa.length(); i++) {
@@ -44,7 +53,6 @@ public class ErrouAcabou implements FuncionamentoModificador {
 					}
 				}
 			}
-			tentativas++;
 		}
 	}
 
@@ -53,7 +61,7 @@ public class ErrouAcabou implements FuncionamentoModificador {
 	 */
 	@Override
 	public void setPalavra() {
-		this.palavraAtual = conjuntoPalavras.getRandomWord();
+		this.palavraAtual = ConjuntoPalavras.getRandomWord();
 		this.palavraEmbaralhada = modificador.embaralha(this.palavraAtual);
 	}
 
@@ -68,10 +76,28 @@ public class ErrouAcabou implements FuncionamentoModificador {
 	@Override
 	public String toString() {
 		return String.format(
-				"{\n  Nome: %s\n  Descrição: %s\n"
-				+ "  NumPalavras: %d\n  NumTentativas: %d\n  MaxTentativas: 1\n"
-				+ "  TotPontos: %d\n  Modificador: %s\n  PalavraCorreta: %s\n}",
-				nome, descricao, palavras, tentativas, pontos, modificador, palavraAtual
+				"{\n  Nome: " + ConsoleColors.CYAN_BRIGHT + "%s" + ConsoleColors.RESET
+				+ "\n  Descrição: " + "%s"
+				+ "\n  NumTentativas: " + ConsoleColors.GREEN_BOLD_BRIGHT + "%d" + ConsoleColors.RESET
+				+ "\n  MaxTentativas: " + ConsoleColors.RED_BOLD_BRIGHT + "1" + ConsoleColors.RESET
+				+ "\n  TotPontos: " + ConsoleColors.GREEN_BOLD_BRIGHT + "%d" + ConsoleColors.RESET
+				+ "\n  Modificador: " + ConsoleColors.CYAN_BRIGHT + "%s" + ConsoleColors.RESET
+				+ "\n  PalavraCorreta: " + ConsoleColors.GREEN_BRIGHT + "%s" + ConsoleColors.RESET + "\n}",
+				nome, descricao, tentativas, pontos, modificador, palavraAtual
 		);
+	}
+	
+	/**
+	 * @return Modificador atual
+	 */
+	public String getModificador() {
+		return modificador.getMetodo();
+	}
+	
+	/**
+	 * @return Funcionamento atual
+	 */
+	public String getFuncionamento() {
+		return nome;
 	}
 }

@@ -2,19 +2,22 @@ package funcionamentoModificadores;
 import java.util.ArrayList;
 import java.util.Random;
 
+import base.ConsoleColors;
+import exceptions.*;
+
 /**
  * @author Felipe Turetti Peruci
- * @version 1.0
+ * @version 1.1
  */
 public class InventaFuncionamentoModificador {
-	private ArrayList<FuncionamentoModificador> fNs = new ArrayList<FuncionamentoModificador>();
+	private ArrayList<FuncionamentoModificador> fMs = new ArrayList<FuncionamentoModificador>();
 	Random rng = new Random();
 	private int funcionamentoAtual;
 	
 	public InventaFuncionamentoModificador() {
-		fNs.add(new MaxNTentativas(4));
-		fNs.add(new MaxNTentativas(8));
-		fNs.add(new ErrouAcabou());
+		fMs.add(new MaxNTentativas(4));
+		fMs.add(new MaxNTentativas(8));
+		fMs.add(new ErrouAcabou());
 	}
 	
 	/**
@@ -29,14 +32,14 @@ public class InventaFuncionamentoModificador {
 	 */
 	public FuncionamentoModificador getFuncionamento() {
 		
-		return fNs.get(funcionamentoAtual);
+		return fMs.get(funcionamentoAtual);
 	}
 	
 	/**
 	 * Seleciona um funcionamento aleatório
 	 */
 	public void selectFuncionamento() {
-		funcionamentoAtual = rng.nextInt(fNs.size());
+		funcionamentoAtual = rng.nextInt(fMs.size());
 		this.getFuncionamento().setPalavra();
 	}
 
@@ -51,20 +54,39 @@ public class InventaFuncionamentoModificador {
 	
 	/**
 	 * @param tentativa A palavra digitada pelo usuário
+	 * @throws palavraLengthException 
 	 */
-	public void tentar(String tentativa) {
-		fNs.get(funcionamentoAtual).tentar(tentativa);
+	public void tentar(String tentativa) throws palavraLengthException{
+		try {
+			fMs.get(funcionamentoAtual).tentar(tentativa);
+		}catch(palavraLengthException e) {
+			throw e;
+		}
 	}
 	
 	/**
 	 * @return Um valor booleano que indica se o usuário pode fazer uma tentativa
 	 */
 	public boolean podeTentar() {
-		return fNs.get(funcionamentoAtual).podeTentar();
+		return fMs.get(funcionamentoAtual).podeTentar();
 	}
 	
 	@Override
 	public String toString() {
-		return this.fNs.get(this.funcionamentoAtual).toString();
+		return this.getFuncionamento().toString();
+	}
+	
+	/**
+	 * @return Nome do modificador atual
+	 */
+	public String getModificador() {
+		return ConsoleColors.CYAN_BOLD_BRIGHT + this.getFuncionamento().getModificador() + ConsoleColors.RESET;
+	}
+	
+	/**
+	 * @return Nome do funcionamento atual
+	 */
+	public String getNomeFuncionamento() {
+		return ConsoleColors.CYAN_BOLD_BRIGHT + this.getFuncionamento().getFuncionamento() + ConsoleColors.RESET;
 	}
 }

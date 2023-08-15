@@ -3,7 +3,7 @@ import java.util.Random;
 
 /**
  * @author Felipe Turetti Peruci
- * @version 1.0
+ * @version 1.1
  */
 public class CaesarCipherForNLetters implements Modificador {
 	private Random rng = new Random();
@@ -42,6 +42,13 @@ public class CaesarCipherForNLetters implements Modificador {
 
 	@Override
 	public String toString() {
-		return String.format("CaesarCipherFor%dLetters%dValores", n, k);
+		return String.format("Cifra de César para %d letras +%d", n, k);
+	}
+	
+	/**
+	 * @return O nome do método utilizado
+	 */
+	public String getMetodo() {
+		return String.format("Cifra de César para %d letras", n);
 	}
 }
