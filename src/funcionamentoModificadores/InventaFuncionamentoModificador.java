@@ -1,13 +1,13 @@
 package funcionamentoModificadores;
 import java.util.ArrayList;
 import java.util.Random;
-
 import base.ConsoleColors;
 import exceptions.*;
 
 /**
  * @author Felipe Turetti Peruci
- * @version 1.1
+ * @author Marcos Vinicius Procykevicz
+ * @version 1.2
  */
 public class InventaFuncionamentoModificador {
 	private ArrayList<FuncionamentoModificador> fMs = new ArrayList<FuncionamentoModificador>();
@@ -88,5 +88,21 @@ public class InventaFuncionamentoModificador {
 	 */
 	public String getNomeFuncionamento() {
 		return ConsoleColors.CYAN_BOLD_BRIGHT + this.getFuncionamento().getFuncionamento() + ConsoleColors.RESET;
+	}
+
+	public String getDescricao(){
+		return this.getFuncionamento().getDescricao();
+	}
+
+	public int getQuantidadeLimite(){
+		return this.getFuncionamento().getLimite();
+	}
+
+	public int getQuantidadeTentativa(){
+		return this.getFuncionamento().getTentativas();
+	}
+
+	public int getQuantidadePontos(){
+		return this.getFuncionamento().getPontos();
 	}
 }

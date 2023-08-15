@@ -5,8 +5,10 @@ import exceptions.*;
 
 /**
  * @author Felipe Turetti Peruci
- * @version 1.1
+ * @author Marcos Vinicius Procykevicz
+ * @version 1.2
  */
+
 public class ClassePrincipal {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -15,17 +17,22 @@ public class ClassePrincipal {
 		InventaFuncionamentoModificador iFM = new InventaFuncionamentoModificador();
 		
 		iFM.selectFuncionamento();
-		
-		System.out.println("Funcionamento: " + iFM.getNomeFuncionamento());
-		System.out.println("Modificador: " + iFM.getModificador());
-		System.out.println(iFM.getPalavra());
-		
+
+		UserInterface.intro();
+		UserInterface.funcionamento(iFM.getNomeFuncionamento());
+		UserInterface.print(iFM.getDescricao());
+		UserInterface.modificador(iFM.getModificador());
+		UserInterface.introTxt();
+
 		while(iFM.podeTentar()) {
 			try {
+				UserInterface.palavra(iFM.getPalavra());
+				UserInterface.printChances(iFM.getQuantidadeTentativa(), iFM.getQuantidadeLimite(), iFM.getQuantidadePontos());
+				UserInterface.chance();
 				tentativa = scanner.next();
 				iFM.tentar(tentativa);
 			}catch(palavraLengthException e) {
-				System.out.println(ConsoleColors.RED_BRIGHT + e + ConsoleColors.RESET);
+				System.out.println(e);
 			}
 		}
 		

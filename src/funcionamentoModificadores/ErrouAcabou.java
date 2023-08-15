@@ -2,11 +2,13 @@ package funcionamentoModificadores;
 import modificadores.InventaModificador;
 import palavras.ConjuntoPalavras;
 import base.ConsoleColors;
+import base.UserInterface;
 import exceptions.*;
 
 /**
  * @author Felipe Turetti Peruci
- * @version 1.1
+ * @author Marcos Vinicius Procykevicz
+ * @version 1.2
  */
 public class ErrouAcabou implements FuncionamentoModificador {
 	private String nome, descricao, palavraAtual, palavraEmbaralhada;
@@ -18,8 +20,8 @@ public class ErrouAcabou implements FuncionamentoModificador {
 	 * O usuário terá 1 tentativa para adivinhar a palavra
 	 */
 	public ErrouAcabou() {
-		this.nome = "ErrouAcabou";
-		this.descricao = "O usuário terá 1 tentativa para adivinhar a palavra";
+		this.nome = "Errou Acabou";
+		this.descricao = " O jogador terá 1 tentativa para adivinhar a palavra";
 	}
 	
 	/**
@@ -44,7 +46,7 @@ public class ErrouAcabou implements FuncionamentoModificador {
 			pontos = 0;
 			if(tentativa.equals(palavraAtual)) {
 				pontos = tentativa.length();
-				System.out.println(ConsoleColors.GREEN_BRIGHT + "Palavra correta!!!" + ConsoleColors.RESET);
+				UserInterface.correta();
 				correta = true;
 			}else {
 				for(int i = 0; i < tentativa.length(); i++) {
@@ -99,5 +101,21 @@ public class ErrouAcabou implements FuncionamentoModificador {
 	 */
 	public String getFuncionamento() {
 		return nome;
+	}
+
+	public String getDescricao(){
+		return this.descricao;
+	}
+
+	public int getLimite(){
+		return 1;
+	}
+
+	public int getTentativas(){
+		return this.tentativas;
+	}
+
+	public int getPontos(){
+		return this.pontos;
 	}
 }

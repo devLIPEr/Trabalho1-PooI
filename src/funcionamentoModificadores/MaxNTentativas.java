@@ -1,12 +1,15 @@
 package funcionamentoModificadores;
+import base.UserInterface;
 import modificadores.*;
 import palavras.*;
 import base.ConsoleColors;
+import base.UserInterface;
 import exceptions.*;
 
 /**
  * @author Felipe Turetti Peruci
- * @version 1.1
+ * @author Marcos Vinicius Procykevicz
+ * @version 1.2
  */
 public class MaxNTentativas implements FuncionamentoModificador {
 	private String nome, descricao, palavraAtual, palavraEmbaralhada;
@@ -28,8 +31,8 @@ public class MaxNTentativas implements FuncionamentoModificador {
 	 */
 	public MaxNTentativas(int n) {
 		this.n = n;
-		this.nome = String.format("Max%dTentativas", n);
-		this.descricao = String.format("O usuário terá %d tentativas para adivinhar a palavra", n);
+		this.nome = String.format("Max %d Tentativas", n);
+		this.descricao = String.format(" O jogador terá %d tentativas para adivinhar a palavra", n);
 	}
 
 	/**
@@ -47,7 +50,7 @@ public class MaxNTentativas implements FuncionamentoModificador {
 			int pontosTentativa = 0;
 			if(tentativa.equals(palavraAtual)) {
 				pontosTentativa = tentativa.length();
-				System.out.println(ConsoleColors.GREEN_BRIGHT + "Palavra correta!!!" + ConsoleColors.RESET);
+				UserInterface.correta();
 				correta = true;
 			}else {
 				for(int i = 0; i < tentativa.length(); i++) {
@@ -103,5 +106,21 @@ public class MaxNTentativas implements FuncionamentoModificador {
 	 */
 	public String getFuncionamento() {
 		return nome;
+	}
+
+	public String getDescricao(){
+		return this.descricao;
+	}
+
+	public int getLimite(){
+		return this.n;
+	}
+
+	public int getTentativas(){
+		return this.tentativas;
+	}
+
+	public int getPontos(){
+		return this.pontos;
 	}
 }
